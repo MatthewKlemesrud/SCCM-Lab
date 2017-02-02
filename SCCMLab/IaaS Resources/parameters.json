@@ -1,0 +1,81 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualMachines_DC_adminPassword": {
+      "value": "W0nd3rland1975"
+    },
+    "virtualMachines_PKI_adminPassword": {
+      "value": "Wond3rland1975"
+    },
+    "virtualMachines_SCCM_adminPassword": {
+      "value": "W0nd3rland1975"
+    },
+    "virtualMachines_Win10_adminPassword": {
+      "value": "Wonderland1975"
+    },
+    "virtualMachines_DC_name": {
+      "value": "TestDC"
+    },
+    "virtualMachines_PKI_name": {
+      "value": "TestPKI"
+    },
+    "virtualMachines_SCCM_name": {
+      "value": "TestSCCM"
+    },
+    "virtualMachines_Win10_name": {
+      "value": "TestWin10"
+    },
+    "networkInterfaces_dc251_name": {
+      "value": "testdc251"
+    },
+    "networkInterfaces_pki74_name": {
+      "value": "testpki74"
+    },
+    "networkInterfaces_sccm751_name": {
+      "value": "testsccm751"
+    },
+    "networkInterfaces_win10775_name": {
+      "value": "testwin10775"
+    },
+    "networkSecurityGroups_DC_nsg_name": {
+      "value": "testdcnsg"
+    },
+    "networkSecurityGroups_PKI_nsg_name": {
+      "value": "testpkinsg"
+    },
+    "networkSecurityGroups_SCCM_nsg_name": {
+      "value": "testsccmnsg"
+    },
+    "networkSecurityGroups_Win10_nsg_name": {
+      "value": "testwin10nsg"
+    },
+    "publicIPAddresses_DC_Public_IP_name": {
+      "value": "mdk1975testsccmlab-dc"
+    },
+    "publicIPAddresses_SCCM_Public_IP_name": {
+      "value": "mdk1975testsccmlab-cm"
+    },
+    "publicIPAddresses_win10_publicip_name": {
+      "value": "mdk1975testsccmlab-win10"
+    },
+    "virtualNetworks_SCCMLab_vnet_name": {
+      "value": "testsccmlabvnet"
+    },
+    "storageAccounts_sccmlabdiag803_name": {
+      "value": "testsccmlabdiag"
+    },
+    "storageAccounts_sccmlabdisks_name": {
+      "value": "testsccmlabdisks"
+    },
+    "storageAccounts_sccmlabdisks367_name": {
+      "value": "testsccmlabdisks367"
+    },
+    "storageAccounts_sccmlabfilestore_name": {
+      "value": "testsccmlabfilestore"
+    },
+    "extensions_enablevmaccess_name": {
+      "value": "extensions_enablevmaccess_name"
+    }
+  }
+}

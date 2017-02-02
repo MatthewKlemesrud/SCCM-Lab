@@ -25,12 +25,18 @@
   <Import Condition=" Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets') " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets" />
   <!-- vertag<:>end -->
   <ItemGroup>
-    <Content Include="azuredeploy.json" />
-    <Content Include="azuredeploy.parameters.json" />
+    <None Include="DC Deployment\Configure DC.ps1" />
+    <None Include="DC Deployment\ConfigureForestDC.ps1" />
+    <None Include="DC Deployment\SCCM Account creation.ps1" />
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
-    <Content Include="Deploy-AzureResourceGroup.ps1" />
+    <None Include="IaaS Resources\deploy.ps1" />
+    <None Include="IaaS Resources\deploy.sh" />
+    <None Include="IaaS Resources\deployer.rb" />
+    <None Include="IaaS Resources\DeploymentHelper.cs" />
+    <None Include="IaaS Resources\parameters.json" />
+    <None Include="IaaS Resources\template.json" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>

@@ -1,0 +1,742 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_DC_adminPassword": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "virtualMachines_PKI_adminPassword": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "virtualMachines_SCCM_adminPassword": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "virtualMachines_Win10_adminPassword": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "virtualMachines_DC_name": {
+            "defaultValue": "DC",
+            "type": "String"
+        },
+        "virtualMachines_PKI_name": {
+            "defaultValue": "PKI",
+            "type": "String"
+        },
+        "virtualMachines_SCCM_name": {
+            "defaultValue": "SCCM",
+            "type": "String"
+        },
+        "virtualMachines_Win10_name": {
+            "defaultValue": "Win10",
+            "type": "String"
+        },
+        "networkInterfaces_dc251_name": {
+            "defaultValue": "dc251",
+            "type": "String"
+        },
+        "networkInterfaces_pki74_name": {
+            "defaultValue": "pki74",
+            "type": "String"
+        },
+        "networkInterfaces_sccm751_name": {
+            "defaultValue": "sccm751",
+            "type": "String"
+        },
+        "networkInterfaces_win10775_name": {
+            "defaultValue": "win10775",
+            "type": "String"
+        },
+        "networkSecurityGroups_DC_nsg_name": {
+            "defaultValue": "DC-nsg",
+            "type": "String"
+        },
+        "networkSecurityGroups_PKI_nsg_name": {
+            "defaultValue": "PKI-nsg",
+            "type": "String"
+        },
+        "networkSecurityGroups_SCCM_nsg_name": {
+            "defaultValue": "SCCM-nsg",
+            "type": "String"
+        },
+        "networkSecurityGroups_Win10_nsg_name": {
+            "defaultValue": "Win10-nsg",
+            "type": "String"
+        },
+        "publicIPAddresses_DC_Public_IP_name": {
+            "defaultValue": "DC-Public-IP",
+            "type": "String"
+        },
+        "publicIPAddresses_SCCM_Public_IP_name": {
+            "defaultValue": "SCCM-Public-IP",
+            "type": "String"
+        },
+        "publicIPAddresses_win10_publicip_name": {
+            "defaultValue": "win10-publicip",
+            "type": "String"
+        },
+        "virtualNetworks_SCCMLab_vnet_name": {
+            "defaultValue": "SCCMLab-vnet",
+            "type": "String"
+        },
+        "storageAccounts_sccmlabdiag803_name": {
+            "defaultValue": "sccmlabdiag803",
+            "type": "String"
+        },
+        "storageAccounts_sccmlabdisks_name": {
+            "defaultValue": "sccmlabdisks",
+            "type": "String"
+        },
+        "storageAccounts_sccmlabdisks367_name": {
+            "defaultValue": "sccmlabdisks367",
+            "type": "String"
+        },
+        "storageAccounts_sccmlabfilestore_name": {
+            "defaultValue": "sccmlabfilestore",
+            "type": "String"
+        },
+        "extensions_enablevmaccess_name": {
+            "defaultValue": "DC/enablevmaccess",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Compute/virtualMachines/DC'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_DC_name')]",
+            "apiVersion": "2015-06-15",
+            "location": "westeurope",
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_DS1_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "name": "[parameters('virtualMachines_DC_name')]",
+                        "createOption": "FromImage",
+                        "vhd": {
+                            "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_DC_name'),'20170106155446.vhd'))]"
+                        },
+                        "caching": "ReadWrite"
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_DC_name')]",
+                    "adminUsername": "master",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": [],
+                    "adminPassword": "[parameters('virtualMachines_DC_adminPassword')]"
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc251_name'))]"
+                        }
+                    ]
+                }
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc251_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Compute/virtualMachines/PKI'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_PKI_name')]",
+            "apiVersion": "2015-06-15",
+            "location": "westeurope",
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Basic_A2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "name": "[parameters('virtualMachines_PKI_name')]",
+                        "createOption": "FromImage",
+                        "vhd": {
+                            "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_PKI_name'),'20170106162743.vhd'))]"
+                        },
+                        "caching": "ReadWrite"
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_PKI_name')]",
+                    "adminUsername": "master",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": [],
+                    "adminPassword": "[parameters('virtualMachines_PKI_adminPassword')]"
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_pki74_name'))]"
+                        }
+                    ]
+                }
+            },
+            "resources": [],
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name'))]",
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_pki74_name'))]",
+            "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_DC_name'))]"
+          ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Compute/virtualMachines/SCCM'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_SCCM_name')]",
+            "apiVersion": "2015-06-15",
+            "location": "westeurope",
+            "tags": {},
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_DS2_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "name": "[parameters('virtualMachines_SCCM_name')]",
+                        "createOption": "FromImage",
+                        "vhd": {
+                            "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks367_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_SCCM_name'),'20170106160822.vhd'))]"
+                        },
+                        "caching": "ReadWrite"
+                    },
+                    "dataDisks": [
+                        {
+                            "lun": 0,
+                            "name": "[concat(parameters('virtualMachines_SCCM_name'),'-20170106-163806')]",
+                            "createOption": "Empty",
+                            "vhd": {
+                                "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_SCCM_name'),'-20170106-163806.vhd'))]"
+                            },
+                            "caching": "None",
+                            "diskSizeGB": 128
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_SCCM_name')]",
+                    "adminUsername": "master",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": [],
+                    "adminPassword": "[parameters('virtualMachines_SCCM_adminPassword')]"
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_sccm751_name'))]"
+                        }
+                    ]
+                }
+            },
+            "resources": [],
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks367_name'))]",
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name'))]",
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_sccm751_name'))]",
+            "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_DC_name'))]"
+          ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Compute/virtualMachines/Win10'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_Win10_name')]",
+            "apiVersion": "2015-06-15",
+            "location": "westeurope",
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Basic_A2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftVisualStudio",
+                        "offer": "Windows",
+                        "sku": "Windows-10-N-x64",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "name": "[parameters('virtualMachines_Win10_name')]",
+                        "createOption": "FromImage",
+                        "vhd": {
+                            "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_Win10_name'),'20170106163309.vhd'))]"
+                        },
+                        "caching": "ReadWrite"
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_Win10_name')]",
+                    "adminUsername": "master",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": [],
+                    "adminPassword": "[parameters('virtualMachines_Win10_adminPassword')]"
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_win10775_name'))]"
+                        }
+                    ]
+                }
+            },
+            "resources": [],
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name'))]",
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_win10775_name'))]",
+            "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_DC_name'))]"
+          ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/networkInterfaces/dc251'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_dc251_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "westeurope",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.4",
+                            "privateIPAllocationMethod": "Static",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_DC_Public_IP_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_SCCMLab_vnet_name')), '/subnets/default')]"
+                            }
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_DC_nsg_name'))]"
+                }
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_DC_Public_IP_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_SCCMLab_vnet_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_DC_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/networkInterfaces/pki74'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_pki74_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "westeurope",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.6",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_SCCMLab_vnet_name')), '/subnets/default')]"
+                            }
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_PKI_nsg_name'))]"
+                }
+            },
+            "resources": [],
+          "dependsOn": [
+            "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_SCCMLab_vnet_name'))]",
+            "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_PKI_nsg_name'))]",
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc251_name'))]"
+          ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/networkInterfaces/sccm751'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_sccm751_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "westeurope",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.5",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_SCCM_Public_IP_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_SCCMLab_vnet_name')), '/subnets/default')]"
+                            }
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_SCCM_nsg_name'))]"
+                }
+            },
+            "resources": [],
+          "dependsOn": [
+            "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_SCCM_Public_IP_name'))]",
+            "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_SCCMLab_vnet_name'))]",
+            "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_SCCM_nsg_name'))]",
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc251_name'))]"
+          ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/networkInterfaces/win10775'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_win10775_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "westeurope",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.7",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_win10_publicip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_SCCMLab_vnet_name')), '/subnets/default')]"
+                            }
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_Win10_nsg_name'))]"
+                }
+            },
+            "resources": [],
+          "dependsOn": [
+            "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_win10_publicip_name'))]",
+            "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_SCCMLab_vnet_name'))]",
+            "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_Win10_nsg_name'))]",
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc251_name'))]"
+          ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/networkSecurityGroups/DC-nsg'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_DC_nsg_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "westeurope",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "default-allow-rdp",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1000,
+                            "direction": "Inbound"
+                        }
+                    }
+                ]
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/networkSecurityGroups/PKI-nsg'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_PKI_nsg_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "westeurope",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "default-allow-rdp",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1000,
+                            "direction": "Inbound"
+                        }
+                    }
+                ]
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/networkSecurityGroups/SCCM-nsg'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_SCCM_nsg_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "westeurope",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "default-allow-rdp",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1000,
+                            "direction": "Inbound"
+                        }
+                    }
+                ]
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/networkSecurityGroups/Win10-nsg'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_Win10_nsg_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "westeurope",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "default-allow-rdp",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1000,
+                            "direction": "Inbound"
+                        }
+                    }
+                ]
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/publicIPAddresses/DC-Public-IP'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[parameters('publicIPAddresses_DC_Public_IP_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "westeurope",
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "test-sccmlab-dc"
+                }
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/publicIPAddresses/SCCM-Public-IP'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[parameters('publicIPAddresses_SCCM_Public_IP_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "westeurope",
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "test-sccmlab-cm"
+                }
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/publicIPAddresses/win10-publicip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[parameters('publicIPAddresses_win10_publicip_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "westeurope",
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "test-sccmlab-win10"
+                }
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/virtualNetworks/SCCMLab-vnet'.",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('virtualNetworks_SCCMLab_vnet_name')]",
+            "apiVersion": "2016-03-30",
+            "location": "westeurope",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.0.0.0/24"
+                    ]
+                },
+                "dhcpOptions": {
+                    "dnsServers": [
+                        "10.0.0.4"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "default",
+                        "properties": {
+                            "addressPrefix": "10.0.0.0/24"
+                        }
+                    }
+                ]
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/sccmlab/providers/Microsoft.Storage/storageAccounts/sccmlabdiag803'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_sccmlabdiag803_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "westeurope",
+            "tags": {},
+            "properties": {},
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/sccmlab/providers/Microsoft.Storage/storageAccounts/sccmlabdisks'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_sccmlabdisks_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "westeurope",
+            "tags": {},
+            "properties": {},
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/sccmlab/providers/Microsoft.Storage/storageAccounts/sccmlabdisks367'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Premium_LRS",
+                "tier": "Premium"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_sccmlabdisks367_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "westeurope",
+            "tags": {},
+            "properties": {},
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/sccmlab/providers/Microsoft.Storage/storageAccounts/sccmlabfilestore'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_sccmlabfilestore_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "westeurope",
+            "tags": {},
+            "properties": {},
+            "resources": [],
+            "dependsOn": []
+        }
+        //{
+        //    "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Compute/virtualMachines/DC/extensions/enablevmaccess'.",
+        //    "type": "Microsoft.Compute/virtualMachines/extensions",
+        //    "name": "[parameters('extensions_enablevmaccess_name')]",
+        //    "apiVersion": "2016-03-30",
+        //    "location": "westeurope",
+        //    "properties": {
+        //        "publisher": "Microsoft.Compute",
+        //        "type": "VMAccessAgent",
+        //        "typeHandlerVersion": "2.0",
+        //        "autoUpgradeMinorVersion": true,
+        //        "settings": {
+        //            "UserName": "master"
+        //        },
+        //        "protectedSettings": {}
+        //    },
+        //    "resources": [],
+        //    "dependsOn": [
+        //        "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_DC_name'))]"
+        //    ]
+        //}
+    ]
+}
