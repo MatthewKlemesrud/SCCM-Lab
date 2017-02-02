@@ -28,7 +28,7 @@
     <None Include="DC Deployment\Configure DC.ps1" />
     <None Include="DC Deployment\ConfigureForestDC.ps1" />
     <None Include="DC Deployment\SCCM Account creation.ps1" />
-    <None Include="deploy.ps1" />
+    <None Include="azuredeploy.ps1" />
     <None Include="deploy.sh" />
     <None Include="deployer.rb" />
     <None Include="Deployment.targets">
