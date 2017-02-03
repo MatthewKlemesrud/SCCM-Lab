@@ -17,7 +17,7 @@ Add-WindowsFeature -Name “dns” -IncludeAllSubFeature -IncludeManagementTools
 Add-WindowsFeature -Name “gpmc” -IncludeAllSubFeature -IncludeManagementTools
 
 $SafeModeAdminPW
-$SecureSafeModeAdminPWd = ConvertTo-SecureString $SafeModeAdminPWd -AsPlainText -Force
+$SecureSafeModeAdminPWd = ConvertTo-SecureString -String $SafeModeAdminPW -AsPlainText -Force
 $SafeModeAdminPW
 $domainname
 $netbiosName
