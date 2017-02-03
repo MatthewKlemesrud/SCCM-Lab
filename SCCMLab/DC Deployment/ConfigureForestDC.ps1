@@ -16,11 +16,7 @@ Add-WindowsFeature -Name “ad-domain-services” -IncludeAllSubFeature -Include
 Add-WindowsFeature -Name “dns” -IncludeAllSubFeature -IncludeManagementTools 
 Add-WindowsFeature -Name “gpmc” -IncludeAllSubFeature -IncludeManagementTools
 
-$SafeModeAdminPW
 $SecureSafeModeAdminPWd = ConvertTo-SecureString -String $SafeModeAdminPW -AsPlainText -Force
-$SafeModeAdminPW
-$domainname
-$netbiosName
 
 Import-Module ADDSDeployment
 Install-ADDSForest -CreateDnsDelegation:$false `
@@ -31,6 +27,6 @@ Install-ADDSForest -CreateDnsDelegation:$false `
 -LogPath “C:\Windows\NTDS” `
 -NoRebootOnCompletion:$false `
 -SysvolPath “C:\Windows\SYSVOL” `
--SafeModeAdministratorPassword $SecureSafeModeAdminPWd `
--whatif
+-SafeModeAdministratorPassword $SecureSafeModeAdminPWd
+
 Stop-Transcript
