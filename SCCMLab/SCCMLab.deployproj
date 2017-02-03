@@ -35,6 +35,7 @@
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
+    <None Include="DeploymentControl.ps1" />
     <None Include="DeploymentHelper.cs" />
     <None Include="parameters.json" />
     <None Include="SQL Deployment\SQLConfigurationFile.ini" />
