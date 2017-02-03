@@ -76,6 +76,18 @@
     },
     "extensions_enablevmaccess_name": {
       "value": "extensions_enablevmaccess_name"
+    },
+    "virtualMachines_DC_domainNameLabel_name": {
+      "value": "CM-LAB-DC"
+    },
+    "virtualMachines_PKI_domainNameLabel_name": {
+      "value": "CM-LAB-PKI"
+    },
+    "virtualMachines_CM_domainNameLabel_name": {
+      "value": "CM-LAB-CM"
+    },
+    "virtualMachines_Win10_domainNameLabel_name": {
+      "value": "CM-LAB-WIN-10"
     }
   }
 }

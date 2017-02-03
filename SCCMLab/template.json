@@ -101,9 +101,38 @@
     "extensions_enablevmaccess_name": {
       "defaultValue": "DC/enablevmaccess",
       "type": "String"
-    }
+    },
+    "virtualMachines_DC_domainnameLabel_name": {
+      "defaultValue": "",
+      "type": "String"
+    },
+    "virtualMachines_CM_domainnameLabel_name": {
+      "defaultValue": "",
+      "type": "String"
+    },
+    "virtualMachines_PKI_domainnameLabel_name": {
+      "defaultValue": "",
+      "type": "String"
+    },
+    "virtualMachines_WIN10_domainnameLabel_name": {
+      "defaultValue": "",
+      "type": "String"
+    },
+      "_artifactsLocation": {
+          "type": "string",
+          "metadata": {
+              "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
+          }
+      },
+      "_artifactsLocationSasToken": {
+          "type": "securestring",
+          "metadata": {
+              "description": "Auto-generated token to access _artifactsLocation"
+          }
+      }
   },
-    "variables": {},
+    "variables": {
+        },
     "resources": [
         {
             "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Compute/virtualMachines/DC'.",
@@ -150,7 +179,8 @@
                     ]
                 }
             },
-            "resources": [],
+            "resources": [
+                ],
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name_01'))]",
                 "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc_name'))]"
@@ -585,9 +615,9 @@
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "idleTimeoutInMinutes": 4,
-                "dnsSettings": {
-                    "domainNameLabel": "test-sccmlab-dc"
-                }
+              "dnsSettings": {
+                "domainNameLabel": "[parameters('virtualMachines_DC_domainnameLabel_name')]"
+              }
             },
             "resources": [],
             "dependsOn": []
@@ -601,9 +631,9 @@
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "idleTimeoutInMinutes": 4,
-                "dnsSettings": {
-                    "domainNameLabel": "test-sccmlab-cm"
-                }
+              "dnsSettings": {
+                "domainNameLabel": "[parameters('virtualMachines_CM_domainnameLabel_name')]"
+              }
             },
             "resources": [],
             "dependsOn": []
@@ -617,9 +647,9 @@
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "idleTimeoutInMinutes": 4,
-                "dnsSettings": {
-                    "domainNameLabel": "test-sccmlab-win10"
-                }
+              "dnsSettings": {
+                "domainNameLabel": "[parameters('virtualMachines_WIN10_domainnameLabel_name')]"
+              }
             },
             "resources": [],
             "dependsOn": []
