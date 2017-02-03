@@ -16,6 +16,10 @@ Add-WindowsFeature -Name “ad-domain-services” -IncludeAllSubFeature -Include
 Add-WindowsFeature -Name “dns” -IncludeAllSubFeature -IncludeManagementTools 
 Add-WindowsFeature -Name “gpmc” -IncludeAllSubFeature -IncludeManagementTools
 
+$SafeModeAdminPW
+$domainname
+$netbiosName
+
 Import-Module ADDSDeployment
 Install-ADDSForest -CreateDnsDelegation:$false `
 -DatabasePath “C:\Windows\NTDS” `
