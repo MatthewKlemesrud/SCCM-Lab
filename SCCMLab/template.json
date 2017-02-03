@@ -1,108 +1,108 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "virtualMachines_DC_adminPassword": {
-            "defaultValue": null,
-            "type": "SecureString"
-        },
-        "virtualMachines_PKI_adminPassword": {
-            "defaultValue": null,
-            "type": "SecureString"
-        },
-        "virtualMachines_SCCM_adminPassword": {
-            "defaultValue": null,
-            "type": "SecureString"
-        },
-        "virtualMachines_Win10_adminPassword": {
-            "defaultValue": null,
-            "type": "SecureString"
-        },
-        "virtualMachines_DC_name": {
-            "defaultValue": "DC",
-            "type": "String"
-        },
-        "virtualMachines_PKI_name": {
-            "defaultValue": "PKI",
-            "type": "String"
-        },
-        "virtualMachines_SCCM_name": {
-            "defaultValue": "SCCM",
-            "type": "String"
-        },
-        "virtualMachines_Win10_name": {
-            "defaultValue": "Win10",
-            "type": "String"
-        },
-        "networkInterfaces_dc251_name": {
-            "defaultValue": "dc251",
-            "type": "String"
-        },
-        "networkInterfaces_pki74_name": {
-            "defaultValue": "pki74",
-            "type": "String"
-        },
-        "networkInterfaces_sccm751_name": {
-            "defaultValue": "sccm751",
-            "type": "String"
-        },
-        "networkInterfaces_win10775_name": {
-            "defaultValue": "win10775",
-            "type": "String"
-        },
-        "networkSecurityGroups_DC_nsg_name": {
-            "defaultValue": "DC-nsg",
-            "type": "String"
-        },
-        "networkSecurityGroups_PKI_nsg_name": {
-            "defaultValue": "PKI-nsg",
-            "type": "String"
-        },
-        "networkSecurityGroups_SCCM_nsg_name": {
-            "defaultValue": "SCCM-nsg",
-            "type": "String"
-        },
-        "networkSecurityGroups_Win10_nsg_name": {
-            "defaultValue": "Win10-nsg",
-            "type": "String"
-        },
-        "publicIPAddresses_DC_Public_IP_name": {
-            "defaultValue": "DC-Public-IP",
-            "type": "String"
-        },
-        "publicIPAddresses_SCCM_Public_IP_name": {
-            "defaultValue": "SCCM-Public-IP",
-            "type": "String"
-        },
-        "publicIPAddresses_win10_publicip_name": {
-            "defaultValue": "win10-publicip",
-            "type": "String"
-        },
-        "virtualNetworks_SCCMLab_vnet_name": {
-            "defaultValue": "SCCMLab-vnet",
-            "type": "String"
-        },
-        "storageAccounts_sccmlabdiag803_name": {
-            "defaultValue": "sccmlabdiag803",
-            "type": "String"
-        },
-        "storageAccounts_sccmlabdisks_name": {
-            "defaultValue": "sccmlabdisks",
-            "type": "String"
-        },
-        "storageAccounts_sccmlabdisks367_name": {
-            "defaultValue": "sccmlabdisks367",
-            "type": "String"
-        },
-        "storageAccounts_sccmlabfilestore_name": {
-            "defaultValue": "sccmlabfilestore",
-            "type": "String"
-        },
-        "extensions_enablevmaccess_name": {
-            "defaultValue": "DC/enablevmaccess",
-            "type": "String"
-        }
+  "parameters": {
+    "virtualMachines_DC_adminPassword": {
+      "defaultValue": null,
+      "type": "SecureString"
     },
+    "virtualMachines_PKI_adminPassword": {
+      "defaultValue": null,
+      "type": "SecureString"
+    },
+    "virtualMachines_CM_adminPassword": {
+      "defaultValue": null,
+      "type": "SecureString"
+    },
+    "virtualMachines_Win10_adminPassword": {
+      "defaultValue": null,
+      "type": "SecureString"
+    },
+    "virtualMachines_DC_name": {
+      "defaultValue": "DC",
+      "type": "String"
+    },
+    "virtualMachines_PKI_name": {
+      "defaultValue": "PKI",
+      "type": "String"
+    },
+    "virtualMachines_CM_name": {
+      "defaultValue": "SCCM",
+      "type": "String"
+    },
+    "virtualMachines_Win10_name": {
+      "defaultValue": "Win10",
+      "type": "String"
+    },
+    "networkInterfaces_dc_name": {
+      "defaultValue": "dc251",
+      "type": "String"
+    },
+    "networkInterfaces_pki_name": {
+      "defaultValue": "pki74",
+      "type": "String"
+    },
+    "networkInterfaces_cm_name": {
+      "defaultValue": "sccm751",
+      "type": "String"
+    },
+    "networkInterfaces_win10_name": {
+      "defaultValue": "win10775",
+      "type": "String"
+    },
+    "networkSecurityGroups_DC_nsg_name": {
+      "defaultValue": "DC-nsg",
+      "type": "String"
+    },
+    "networkSecurityGroups_PKI_nsg_name": {
+      "defaultValue": "PKI-nsg",
+      "type": "String"
+    },
+    "networkSecurityGroups_SCCM_nsg_name": {
+      "defaultValue": "SCCM-nsg",
+      "type": "String"
+    },
+    "networkSecurityGroups_Win10_nsg_name": {
+      "defaultValue": "Win10-nsg",
+      "type": "String"
+    },
+    "publicIPAddresses_DC_Public_IP_name": {
+      "defaultValue": "DC-Public-IP",
+      "type": "String"
+    },
+    "publicIPAddresses_SCCM_Public_IP_name": {
+      "defaultValue": "SCCM-Public-IP",
+      "type": "String"
+    },
+    "publicIPAddresses_win10_publicip_name": {
+      "defaultValue": "win10-publicip",
+      "type": "String"
+    },
+    "virtualNetworks_SCCMLab_vnet_name": {
+      "defaultValue": "SCCMLab-vnet",
+      "type": "String"
+    },
+    "storageAccounts_sccmlabdiag_name": {
+      "defaultValue": "sccmlabdiag803",
+      "type": "String"
+    },
+    "storageAccounts_sccmlabdisks_name_01": {
+      "defaultValue": "sccmlabdisks",
+      "type": "String"
+    },
+    "storageAccounts_sccmlabdisks_name_02": {
+      "defaultValue": "sccmlabdisks367",
+      "type": "String"
+    },
+    "storageAccounts_sccmlabfilestore_name_01": {
+      "defaultValue": "sccmlabfilestore",
+      "type": "String"
+    },
+    "extensions_enablevmaccess_name": {
+      "defaultValue": "DC/enablevmaccess",
+      "type": "String"
+    }
+  },
     "variables": {},
     "resources": [
         {
@@ -126,7 +126,7 @@
                         "name": "[parameters('virtualMachines_DC_name')]",
                         "createOption": "FromImage",
                         "vhd": {
-                            "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_DC_name'),'20170106155446.vhd'))]"
+                            "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name_01'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_DC_name'),'20170106155446.vhd'))]"
                         },
                         "caching": "ReadWrite"
                     },
@@ -145,15 +145,15 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc251_name'))]"
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc_name'))]"
                         }
                     ]
                 }
             },
             "resources": [],
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name'))]",
-                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc251_name'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name_01'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc_name'))]"
             ]
         },
         {
@@ -177,7 +177,7 @@
                         "name": "[parameters('virtualMachines_PKI_name')]",
                         "createOption": "FromImage",
                         "vhd": {
-                            "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_PKI_name'),'20170106162743.vhd'))]"
+                            "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name_01'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_PKI_name'),'20170106162743.vhd'))]"
                         },
                         "caching": "ReadWrite"
                     },
@@ -196,22 +196,22 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_pki74_name'))]"
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_pki_name'))]"
                         }
                     ]
                 }
             },
             "resources": [],
           "dependsOn": [
-            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name'))]",
-            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_pki74_name'))]",
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name_01'))]",
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_pki_name'))]",
             "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_DC_name'))]"
           ]
         },
         {
             "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Compute/virtualMachines/SCCM'.",
             "type": "Microsoft.Compute/virtualMachines",
-            "name": "[parameters('virtualMachines_SCCM_name')]",
+            "name": "[parameters('virtualMachines_CM_name')]",
             "apiVersion": "2015-06-15",
             "location": "westeurope",
             "tags": {},
@@ -227,20 +227,20 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "name": "[parameters('virtualMachines_SCCM_name')]",
+                        "name": "[parameters('virtualMachines_CM_name')]",
                         "createOption": "FromImage",
                         "vhd": {
-                            "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks367_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_SCCM_name'),'20170106160822.vhd'))]"
+                            "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name_02'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_CM_name'),'20170106160822.vhd'))]"
                         },
                         "caching": "ReadWrite"
                     },
                     "dataDisks": [
                         {
                             "lun": 0,
-                            "name": "[concat(parameters('virtualMachines_SCCM_name'),'-20170106-163806')]",
+                            "name": "[concat(parameters('virtualMachines_CM_name'),'-20170106-163806')]",
                             "createOption": "Empty",
                             "vhd": {
-                                "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_SCCM_name'),'-20170106-163806.vhd'))]"
+                                "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name_01'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_CM_name'),'-20170106-163806.vhd'))]"
                             },
                             "caching": "None",
                             "diskSizeGB": 128
@@ -248,28 +248,28 @@
                     ]
                 },
                 "osProfile": {
-                    "computerName": "[parameters('virtualMachines_SCCM_name')]",
+                    "computerName": "[parameters('virtualMachines_CM_name')]",
                     "adminUsername": "master",
                     "windowsConfiguration": {
                         "provisionVMAgent": true,
                         "enableAutomaticUpdates": true
                     },
                     "secrets": [],
-                    "adminPassword": "[parameters('virtualMachines_SCCM_adminPassword')]"
+                    "adminPassword": "[parameters('virtualMachines_CM_adminPassword')]"
                 },
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_sccm751_name'))]"
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_cm_name'))]"
                         }
                     ]
                 }
             },
             "resources": [],
           "dependsOn": [
-            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks367_name'))]",
-            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name'))]",
-            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_sccm751_name'))]",
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name_02'))]",
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name_01'))]",
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_cm_name'))]",
             "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_DC_name'))]"
           ]
         },
@@ -294,7 +294,7 @@
                         "name": "[parameters('virtualMachines_Win10_name')]",
                         "createOption": "FromImage",
                         "vhd": {
-                            "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_Win10_name'),'20170106163309.vhd'))]"
+                            "uri": "[concat('https', '://', parameters('storageAccounts_sccmlabdisks_name_01'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_Win10_name'),'20170106163309.vhd'))]"
                         },
                         "caching": "ReadWrite"
                     },
@@ -313,22 +313,22 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_win10775_name'))]"
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_win10_name'))]"
                         }
                     ]
                 }
             },
             "resources": [],
           "dependsOn": [
-            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name'))]",
-            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_win10775_name'))]",
+            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sccmlabdisks_name_01'))]",
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_win10_name'))]",
             "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_DC_name'))]"
           ]
         },
         {
             "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/networkInterfaces/dc251'.",
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "[parameters('networkInterfaces_dc251_name')]",
+            "name": "[parameters('networkInterfaces_dc_name')]",
             "apiVersion": "2016-03-30",
             "location": "westeurope",
             "properties": {
@@ -365,7 +365,7 @@
         {
             "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/networkInterfaces/pki74'.",
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "[parameters('networkInterfaces_pki74_name')]",
+            "name": "[parameters('networkInterfaces_pki_name')]",
             "apiVersion": "2016-03-30",
             "location": "westeurope",
             "properties": {
@@ -393,13 +393,13 @@
           "dependsOn": [
             "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_SCCMLab_vnet_name'))]",
             "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_PKI_nsg_name'))]",
-            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc251_name'))]"
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc_name'))]"
           ]
         },
         {
             "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/networkInterfaces/sccm751'.",
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "[parameters('networkInterfaces_sccm751_name')]",
+            "name": "[parameters('networkInterfaces_cm_name')]",
             "apiVersion": "2016-03-30",
             "location": "westeurope",
             "properties": {
@@ -431,13 +431,13 @@
             "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_SCCM_Public_IP_name'))]",
             "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_SCCMLab_vnet_name'))]",
             "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_SCCM_nsg_name'))]",
-            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc251_name'))]"
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc_name'))]"
           ]
         },
         {
             "comments": "Generalized from resource: '/subscriptions/01c3ec27-c807-4ca0-ba5e-15e92abfa6ce/resourceGroups/SCCMLab/providers/Microsoft.Network/networkInterfaces/win10775'.",
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "[parameters('networkInterfaces_win10775_name')]",
+            "name": "[parameters('networkInterfaces_win10_name')]",
             "apiVersion": "2016-03-30",
             "location": "westeurope",
             "properties": {
@@ -469,7 +469,7 @@
             "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_win10_publicip_name'))]",
             "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_SCCMLab_vnet_name'))]",
             "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_Win10_nsg_name'))]",
-            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc251_name'))]"
+            "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dc_name'))]"
           ]
         },
         {
@@ -661,7 +661,7 @@
                 "tier": "Standard"
             },
             "kind": "Storage",
-            "name": "[parameters('storageAccounts_sccmlabdiag803_name')]",
+            "name": "[parameters('storageAccounts_sccmlabdiag_name')]",
             "apiVersion": "2016-01-01",
             "location": "westeurope",
             "tags": {},
@@ -677,7 +677,7 @@
                 "tier": "Standard"
             },
             "kind": "Storage",
-            "name": "[parameters('storageAccounts_sccmlabdisks_name')]",
+            "name": "[parameters('storageAccounts_sccmlabdisks_name_01')]",
             "apiVersion": "2016-01-01",
             "location": "westeurope",
             "tags": {},
@@ -693,7 +693,7 @@
                 "tier": "Premium"
             },
             "kind": "Storage",
-            "name": "[parameters('storageAccounts_sccmlabdisks367_name')]",
+            "name": "[parameters('storageAccounts_sccmlabdisks_name_02')]",
             "apiVersion": "2016-01-01",
             "location": "westeurope",
             "tags": {},
@@ -709,7 +709,7 @@
                 "tier": "Standard"
             },
             "kind": "Storage",
-            "name": "[parameters('storageAccounts_sccmlabfilestore_name')]",
+            "name": "[parameters('storageAccounts_sccmlabfilestore_name_01')]",
             "apiVersion": "2016-01-01",
             "location": "westeurope",
             "tags": {},

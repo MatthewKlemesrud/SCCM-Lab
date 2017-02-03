@@ -35,7 +35,7 @@
     "networkInterfaces_cm_name": {
       "value": "cm-lab-cm-01"
     },
-    "networkInterfaces_win_10_name": {
+    "networkInterfaces_win10_name": {
       "value": "cm-lab-win-10-01"
     },
     "networkSecurityGroups_DC_nsg_name": {
@@ -62,7 +62,7 @@
     "virtualNetworks_SCCMLab_vnet_name": {
       "value": "cm-lab-vnet"
     },
-    "storageAccounts_sccmlabdiag803_name": {
+    "storageAccounts_sccmlabdiag_name": {
       "value": "cm-lab-vm-diag"
     },
     "storageAccounts_sccmlabdisks_name_01": {
