@@ -2,18 +2,18 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
   "parameters": {
-    "virtualMachines_DC_adminPassword": {
-      "value": "W0nd3rland1975"
-    },
-    "virtualMachines_PKI_adminPassword": {
-      "value": "Wond3rland1975"
-    },
-    "virtualMachines_CM_adminPassword": {
-      "value": "W0nd3rland1975"
-    },
-    "virtualMachines_Win10_adminPassword": {
-      "value": "Wonderland1975"
-    },
+    //"virtualMachines_DC_adminPassword": {
+    //  "value": ""
+    //},
+    //"virtualMachines_PKI_adminPassword": {
+    //  "value": ""
+    //},
+    //"virtualMachines_CM_adminPassword": {
+    //  "value": ""
+    //},
+    //"virtualMachines_Win10_adminPassword": {
+    //  "value": ""
+    //},
     "virtualMachines_DC_name": {
       "value": "CM-LAB-DC"
     },
